@@ -1,12 +1,16 @@
 import React from 'react'
 import bgImage from '../utils/images/bg-image.jpg'
 import Header from "./Header"
-import {useState} from 'react'
-
+import {useState ,useRef} from 'react'
+import { validate } from "../utils/validate.js"
 
 const Login = () => {
   const [isSignInForm ,setSignInForm] = useState(true);
   const [isLearnMore , setIsLearnMore] = useState(false);
+  const [errorMessage , setErrorMessage] = useState(null);
+
+  const email = useRef(null);
+  const password = useRef(null);
 
   const toggleForm = ()=>{
     setSignInForm(!isSignInForm);
@@ -16,6 +20,16 @@ const Login = () => {
     setIsLearnMore(!isLearnMore);
   }
 
+  const handleButtonClick = ()=>{
+    console.log(email.current.value);
+    console.log(password.current.value);
+
+    const message = validate(email.current.value , password.current.value);
+    console.log(message);
+
+    setErrorMessage(message);
+  }
+
   return (
     <div className="relative">
       <Header />
@@ -23,14 +37,28 @@ const Login = () => {
       <img 
       src={bgImage} 
       alt="background-image"
-      className="h-full w-full object-cover"
-      >
+      className="h-full w-full object-cover">
       </img>
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <form className="border-2 border-black h-3/4 w-4/12 m-10 p-4 rounded-lg bg-black bg-opacity-80">
-        <h1 className="text-white font-bold text-3xl m-2 p-2 ">{isSignInForm ? "SignIn" : "SignUp"}</h1>
-        <input placeholder='E-mail' className="border-2 border-black m-4  rounded-sm p-2 bg-gray-600 w-11/12 cursor-text"></input>
+        <form 
+        onSubmit = {(e)=>{
+          e.preventDefault();
+        }}
+        className="border-2 border-black h-3/4 w-4/12 m-10 p-4 rounded-lg bg-black bg-opacity-80">
+
+
+        <h1 
+        className="text-white font-bold text-3xl m-2 p-2 ">{isSignInForm ? "SignIn" : "SignUp"}
+        </h1>
+
+
+        <input 
+        ref = {email}
+        placeholder='E-mail' 
+        className="border-2 border-black m-4  rounded-sm p-2 bg-gray-600 w-11/12 cursor-text">
+        </input>
+
 
         { !isSignInForm && (
         <input 
@@ -39,10 +67,27 @@ const Login = () => {
         className="border-2 border-black m-4 rounded-sm p-2 bg-gray-600 w-11/12 curosr-text">
         </input> )} 
 
-        <input placeholder='Password' type="password" className="border-2 border-black m-4 rounded-sm p-2 bg-gray-600 w-11/12 curosr-text"></input>
-        <button className="border-2 border-black m-4 rounded-md p-2 bg-red-600 cursor-pointer w-11/12">
+
+        <input 
+        ref = {password}
+        placeholder='Password' 
+        type="password" 
+        className="border-2 border-black m-4 rounded-sm p-2 bg-gray-600 w-11/12 curosr-text">
+        </input>
+
+
+        <button 
+        onClick={handleButtonClick}
+        className="border-2 border-black m-4 rounded-md p-2 bg-red-600 cursor-pointer w-11/12">
           {isSignInForm ? "SignIn" : "SignUp"}
         </button>
+
+
+        <p className="text-red-600  ml-8 text-lg font-bold" >
+          {isSignInForm && errorMessage}
+        </p>
+
+
 
         <div className="m-2 p-2">
           <p className="text-white m-2 p-2 text-sm inline">New to Netflix ?</p>
@@ -50,8 +95,10 @@ const Login = () => {
         </div>
 
         <div>
-          <p className="underline cursor-pointer text-sm m-2 p-2 text-white " onClick={addLearn} >{!isLearnMore ? "LearnMore" : "" }</p>
+          <p className="underline cursor-pointer text-sm m-2 p-2 text-white " onClick={addLearn} >{!isLearnMore ? "LearnMore":"" }</p>
         </div>
+
+
 
         <div>
           {isLearnMore && (
@@ -61,8 +108,6 @@ const Login = () => {
           )}
         </div>
 
-
-        
 
         </form>
       </div>
