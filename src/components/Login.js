@@ -28,6 +28,8 @@ const Login = () => {
     console.log(message);
 
     setErrorMessage(message);
+    if(message) return;
+
   }
 
   return (
@@ -78,7 +80,8 @@ const Login = () => {
 
         <button 
         onClick={handleButtonClick}
-        className="border-2 border-black m-4 rounded-md p-2 bg-red-600 cursor-pointer w-11/12">
+        className="border-2 border-black m-4 rounded-md p-2 bg-red-500 cursor-pointer w-11/12 
+      hover:bg-red-600 active:bg-red-700 active:scale-95 active:shadow-inner">
           {isSignInForm ? "SignIn" : "SignUp"}
         </button>
 
@@ -93,6 +96,8 @@ const Login = () => {
           <p className="text-white m-2 p-2 text-sm inline">New to Netflix ?</p>
           <p  className="text-gray-500 text-lg p-1 m-1 font-bold inline underline cursor-pointer" onClick={toggleForm} >{!isSignInForm ? "SignIn" : "SignUp"} Now</p>
         </div>
+
+
 
         <div>
           <p className="underline cursor-pointer text-sm m-2 p-2 text-white " onClick={addLearn} >{!isLearnMore ? "LearnMore":"" }</p>
