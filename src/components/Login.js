@@ -5,13 +5,11 @@ import {useState ,useRef} from 'react'
 import { validate } from "../utils/validate.js"
 import { auth } from "../utils/firebase"
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword , updateProfile} from "firebase/auth";
-import { useNavigate } from "react-router-dom"
 
 const Login = () => {
   const [isSignInForm ,setSignInForm] = useState(true);
   const [isLearnMore , setIsLearnMore] = useState(false);
   const [errorMessage , setErrorMessage] = useState(null);
-  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -45,7 +43,6 @@ const Login = () => {
         displayName: "name.current.value",
         photoURL: "https://example.com/jane-q-user/profile.jpg"
         }).then(() => {
-          navigate("/Browse");
         }).catch((error) => {
           // An error occurred
           // ...
@@ -67,13 +64,11 @@ const Login = () => {
         // Signed up 
         const user = userCredential.user;
         console.log(user);
-        navigate("Browse")
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setErrorMessage(errorCode + "-" + errorMessage);
-        navigate("/")
       });
     }
 

@@ -1,6 +1,47 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react"
+import { addUser, removeUser } from "../utils/ReduxStore/userSlice"
+import { auth } from "../utils/firebase"
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+      useEffect(()=>{
+          onAuthStateChanged(auth, (user) => {
+          if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+      
+          const { uid ,email ,displayName } = user;
+  
+          dispatch(addUser({
+              id : uid ,
+              name : displayName ,
+              email : email ,
+          })) ;
+          if (location.pathname === "/") {
+          navigate("/Browse");
+          }
+  
+          } else {
+              // User is signed out
+              dispatch(removeUser()) ;
+              if (location.pathname !== "/") {
+              navigate("/");
+              }
+              
+          }
+          });
+      },[])
+
+
   return (
     <div className = "absolute w-52 ml-16 p-4">
         <img 
