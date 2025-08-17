@@ -1,8 +1,14 @@
 import React from 'react'
+import HeaderBrowse from "./HeaderBrowse"
 
 const Browse = () => {
   return (
-    <div>Browse</div>
+    <div>
+      <div className="w-full flex justify-between">
+        <HeaderBrowse/>
+        
+      </div>
+    </div>
   )
 }
 

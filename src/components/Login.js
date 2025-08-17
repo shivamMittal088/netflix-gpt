@@ -3,11 +3,15 @@ import bgImage from '../utils/images/bg-image.jpg'
 import Header from "./Header"
 import {useState ,useRef} from 'react'
 import { validate } from "../utils/validate.js"
+import { auth } from "../utils/firebase"
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword , updateProfile} from "firebase/auth";
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
   const [isSignInForm ,setSignInForm] = useState(true);
   const [isLearnMore , setIsLearnMore] = useState(false);
   const [errorMessage , setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -30,7 +34,52 @@ const Login = () => {
     setErrorMessage(message);
     if(message) return;
 
+
+
+    if(isSignInForm){
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        updateProfile(auth.currentUser, {
+        displayName: "name.current.value",
+        photoURL: "https://example.com/jane-q-user/profile.jpg"
+        }).then(() => {
+          navigate("/Browse");
+        }).catch((error) => {
+          // An error occurred
+          // ...
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + "-" + errorMessage)
+      });
+
+    }
+    else{
+     createUserWithEmailAndPassword(
+      auth, 
+      email.current.value, 
+      password.current.value)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        console.log(user);
+        navigate("Browse")
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + "-" + errorMessage);
+        navigate("/")
+      });
+    }
+
   }
+
+
 
   return (
     <div className="relative">
@@ -87,7 +136,7 @@ const Login = () => {
 
 
         <p className="text-red-600  ml-8 text-lg font-bold" >
-          {isSignInForm && errorMessage}
+          {errorMessage}
         </p>
 
 
