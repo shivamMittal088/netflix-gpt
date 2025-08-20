@@ -1,7 +1,9 @@
-import React from 'react'
 import HeaderBrowse from "./HeaderBrowse"
+import useNowPlayingMovies from "../customHooks/useNowPlayingMovies"
 
 const Browse = () => {
+  useNowPlayingMovies();
+
   return (
     <div>
       <div className="w-full flex justify-between">
@@ -12,4 +14,4 @@ const Browse = () => {
   )
 }
 
-export default Browse
+export default Browse;

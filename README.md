@@ -12,6 +12,9 @@
     - Create sign up user account
     - implement sign in user api
     - created redux store with user slice .
+    - implement sign out
+    - update profile
+    - BugFix : if the user is not logged in redirect to login page .
 
 
 # Features

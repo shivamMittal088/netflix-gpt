@@ -5,11 +5,13 @@ import {useState ,useRef} from 'react'
 import { validate } from "../utils/validate.js"
 import { auth } from "../utils/firebase"
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword , updateProfile} from "firebase/auth";
+import { Eye ,EyeOff } from "lucide-react" ;
 
 const Login = () => {
   const [isSignInForm ,setSignInForm] = useState(true);
   const [isLearnMore , setIsLearnMore] = useState(false);
   const [errorMessage , setErrorMessage] = useState(null);
+  const [showPassword ,setShowPassword ] = useState(false);
 
   const email = useRef(null);
   const password = useRef(null);
@@ -63,7 +65,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
-        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -77,7 +78,7 @@ const Login = () => {
 
 
   return (
-    <div className="relative">
+    <div className="relative h-full w-full">
       <Header />
 
       <img 
@@ -86,7 +87,15 @@ const Login = () => {
       className="h-full w-full object-cover">
       </img>
 
-      <div className="absolute inset-0 flex items-center justify-center">
+      { 
+      /* inset-0 means
+      top-0 , left-0 , right-0 ,bottom-0
+      this means that it will stretch the div to the full height of the positioned ancestor . 
+      inset-1 = inset 4px from every edge.
+      */
+      }
+
+      <div className="absolute inset-0 flex justify-center items-center ">
         <form 
         onSubmit = {(e)=>{
           e.preventDefault();
@@ -114,13 +123,23 @@ const Login = () => {
         </input> )} 
 
 
-        <input 
-        ref = {password}
-        placeholder='Password' 
-        type="password" 
-        className="border-2 border-black m-4 rounded-sm p-2 bg-gray-600 w-11/12 curosr-text">
-        </input>
+        {/* Password with Eye toggle */}
+      <div className="relative w-11/12 m-4">  { /*make it parent so that it can become relative of eye button .*/ }
+        <input
+          ref={password}
+          placeholder="Password"
+          type={showPassword ? "text" : "password"}
+          className="w-full border-2 border-black rounded-sm p-2 bg-gray-600 cursor-text"
+        />
 
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-black"
+        >
+          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+        </button>
+      </div>
 
         <button 
         onClick={handleButtonClick}
