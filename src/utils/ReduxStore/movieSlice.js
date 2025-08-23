@@ -1,4 +1,3 @@
-import React from 'react'
 import { createSlice } from '@reduxjs/toolkit'
 
 const movieSlice = createSlice({
@@ -18,3 +17,6 @@ const movieSlice = createSlice({
 export const { addNowPlayingMovies } = movieSlice.actions;
 
 export default movieSlice.reducer;
+
+// reducers are basically functions .
+// slice is basically containing objects in key value pair .

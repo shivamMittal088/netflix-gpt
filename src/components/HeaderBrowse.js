@@ -11,8 +11,10 @@ const HeaderBrowse = () => {
     const dispatch = useDispatch();
 
     const handleSignOut = ()=> {
-        signOut(auth).then(() => {
+        signOut(auth).
+        then(() => {
         // Sign-out successful.
+        dispatch(removeUser());
         navigate("/");
         }).catch((error) => {
         // An error happened.
@@ -49,7 +51,7 @@ const HeaderBrowse = () => {
 
 
   return (
-    <div className="w-full bg-gradient-to-b from-black/80 to-transparent top-0 z-20">
+    <div className="absolute w-full bg-gradient-to-b from-black/80 to-transparent top-0 z-20">
       <div className="flex justify-between items-center px-12 py-4">
         
         {/* Netflix Logo */}
@@ -66,9 +68,10 @@ const HeaderBrowse = () => {
             alt="user-logo"
             className="w-10 h-10 rounded-md cursor-pointer"
           />
+          
           <button 
           className="text-white font-semibold hover:underline cursor-pointer"
-          onClick={handleSignOut}>Sign Out</button>
+          onClick = {handleSignOut}> Sign Out </button>
         </div>
 
       </div>
