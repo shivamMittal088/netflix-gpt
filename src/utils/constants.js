@@ -6,3 +6,5 @@ export const API_options = {
   }
 };
 
+
+export const IMG_URL_PATH = "https://image.tmdb.org/t/p/w500"
