@@ -28,6 +28,11 @@
     - Build Secondary container 
     - Build movie List .
     - Build Movie Card .
+    - Use custom Hooks to make code modular .
+    - Gpt search bar .
+    - Gpt search page .
+    - (Bonus) Enabled Multi language Feature .
+
 
 
 

@@ -18,7 +18,7 @@ const Browse = () => {
 
   const GptSearch = useSelector((store)=>{
     return store.GptSearch;
-  })
+  }) 
 
   return (
     <div>

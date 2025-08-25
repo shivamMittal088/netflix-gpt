@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react"
 import { addUser, removeUser } from "../utils/ReduxStore/userSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { ToggleGpt } from "../utils/ReduxStore/GptSlice";
+import { SUPPORTED_LANGUAGE } from "../utils/LanguageConstants";
+import { changeLanguage } from "../utils/ReduxStore/MultiLanguageSlice";
 
 const HeaderBrowse = () => {
     const navigate = useNavigate();
@@ -52,6 +54,14 @@ const HeaderBrowse = () => {
       dispatch(ToggleGpt());
     }
 
+    const check = useSelector((store)=>{
+      return store.GptSearch;
+    })
+
+    const handleMultiLanguge = (e)=>{
+      console.log(e.target.value);
+      dispatch(changeLanguage(e.target.value));
+    }
 
 
   return (
@@ -67,10 +77,36 @@ const HeaderBrowse = () => {
 
         
         {/* Right Section */}
+
+
+        { /* Gpt search*/ }
         <div className="flex items-center gap-4">
 
+
+          {/* Multi Language */}
+          {
+            (!check.Gpt) &&
+            <div>
+          <select className="bg-black text-white font-semibold p-2 px-3 rounded-lg border border-gray-600 shadow-md hover:bg-gray-900 transition duration-200 ease-in-out cursor-pointer"
+          defaultValue=""
+          onClick = { handleMultiLanguge }>
+            <option value="" disabled>Select Language</option>
+            {
+              SUPPORTED_LANGUAGE.map( (lan) => {
+              return (
+                <option key={lan.identifier} value = {lan.identifier}> { lan.value } </option>
+              )
+            })
+            }
+          </select>
+        </div>
+          }
+          
+
+
+
           <button className="bg-red-700 p-1.5 rounded-lg font-semibold text-white cursor-pointer hover:p-1"
-          onClick={handleToggle}>
+          onClick = {handleToggle}>
           Gpt Search
         </button>
 
@@ -92,3 +128,25 @@ const HeaderBrowse = () => {
 }
 
 export default HeaderBrowse
+
+
+{
+  /*
+    🔹 What defaultValue Does
+In a <select> element in React, the defaultValue attribute sets the initial selected option when the component first renders.
+It tells React: “When this dropdown loads, start with this value selected.”
+After that, the dropdown works normally (user can change the selection).
+  */
+}
+
+
+{
+  /*
+  <select defaultValue="banana">
+  <option value="apple">Apple</option>
+  <option value="banana">Banana</option>
+  <option value="mango">Mango</option>
+</select>
+
+  */
+}
