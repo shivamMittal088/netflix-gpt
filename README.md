@@ -24,7 +24,11 @@
     - Planning for mainContainer and secondary Container .
     - Fetch data for trailer videos .
     - Embed the youtube video and make it autoplay and mute .
-    -
+    - Tailwind classes to make container lokking good .
+    - Build Secondary container 
+    - Build movie List .
+    - Build Movie Card .
+
 
 
 # Features
@@ -32,4 +36,10 @@
     - Redirect to Browse Page 
 
     - Browse(after authentication)
-        -
+        - Header
+        - MainMovie 
+            - Trailer in Background .
+            - Title & Description .
+            - Movie Suggestions 
+                - MovieList * N .
+        - Add Shimmer UI .

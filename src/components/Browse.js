@@ -5,6 +5,8 @@ import useNowPlayingMovies from "../customHooks/useNowPlayingMovies"
 import usePopularMovies from "../customHooks/usePopularMovies"
 import useTopRatedMovies from "../customHooks/useTopRatedMovies"
 import useUpcomingMovies from "../customHooks/useUpcomingMovies"
+import { useSelector } from "react-redux"
+import GptSearchBar  from "../utils/GptSearchBar"
 
 const Browse = () => {
     useNowPlayingMovies();
@@ -14,28 +16,26 @@ const Browse = () => {
 
   {/* we have created hook because code is looking with very lengthy , hence to simplify our browse page . */}
 
+  const GptSearch = useSelector((store)=>{
+    return store.GptSearch;
+  })
+
   return (
     <div>
-
+      
       <div className="w-full flex justify-between">
         <HeaderBrowse/>
       </ div>
 
+      {
+        (!GptSearch.Gpt) ? <GptSearchBar /> :
 
-        <div>
+           <div>
           < MainContainer />
           < SecondaryContainer />
-        </ div>
+          </ div>
 
-        { /*
-     # Main Container 
-     - video Title
-     - video background .
-
-   # Secondary Container 
-    - list of movies * n .
-      - cards * n  
-    */ }  
+      }
 
     </div>
   )

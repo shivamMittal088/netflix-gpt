@@ -5,6 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react"
 import { addUser, removeUser } from "../utils/ReduxStore/userSlice"
 import { useDispatch } from "react-redux"
+import { ToggleGpt } from "../utils/ReduxStore/GptSlice";
 
 const HeaderBrowse = () => {
     const navigate = useNavigate();
@@ -47,6 +48,9 @@ const HeaderBrowse = () => {
         });
     },[])
 
+    const handleToggle = ()=>{
+      dispatch(ToggleGpt());
+    }
 
 
 
@@ -61,8 +65,16 @@ const HeaderBrowse = () => {
           className="w-40 cursor-pointer"
         />
 
+        
         {/* Right Section */}
         <div className="flex items-center gap-4">
+
+          <button className="bg-red-700 p-1.5 rounded-lg font-semibold text-white cursor-pointer hover:p-1"
+          onClick={handleToggle}>
+          Gpt Search
+        </button>
+
+
           <img 
             src="https://occ-0-2152-3647.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABeGp5GpS9YuLG46QJ6mDymuYqq2e96HmAK4d73YfnCA8KNyqbmALMIqBFrG4bovJBSEdGaDQtAM7EKheZVrsEBN6hi4WHZg.png?r=733" 
             alt="user-logo"
@@ -70,7 +82,7 @@ const HeaderBrowse = () => {
           />
           
           <button 
-          className="text-white font-semibold hover:underline cursor-pointer"
+          className="text-white font-semibold hover:underline cursor-pointer "
           onClick = {handleSignOut}> Sign Out </button>
         </div>
 
