@@ -7,19 +7,29 @@ const GptSearchBar = () => {
     return store.MultiLanguageSlice.language;
   })
 
-  const langConfig = l || "en" ;
+  const theme = useSelector((store)=>{
+    return store.theme.theme ;
+  })
 
   return (
-    <div className="relative h-screen bg-gradient-to-b from-black via-gray-900 to-black">
+    <div className= { "relative h-screen " + 
+  (theme === "dark" 
+    ? "bg-gradient-to-b from-black via-gray-900 to-black" 
+    : "bg-gradient-to-b from-white via-gray-200 to-white"
+  )
+}>
+
+
+
       <div className="absolute flex top-[15%] w-screen justify-center">
 
       <form className = "flex w-[45%] bg-black p-3 gap-4">
 
       <input className="w-[80%] bg-red-700 p-2 rounded-md border border-white"
-      placeholder = {LANG[langConfig].placeholder} ></input>
+      placeholder = {LANG[l].placeholder} ></input>
 
 
-      <button className="w-[20%] bg-red-700 text-white font-medium rounded-lg p-2 border border-white"> {LANG[langConfig].submit} </button>
+      <button className="w-[20%] bg-red-700 text-white font-medium rounded-lg p-2 border border-white"> {LANG[l].submit} </button>
     </form>
 
     </div>

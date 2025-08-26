@@ -1,4 +1,4 @@
-import { auth }  from "../utils/firebase"
+import { auth }  from "../utils/firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from "firebase/auth";
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { ToggleGpt } from "../utils/ReduxStore/GptSlice";
 import { SUPPORTED_LANGUAGE } from "../utils/LanguageConstants";
 import { changeLanguage } from "../utils/ReduxStore/MultiLanguageSlice";
+import { changeTheme } from "../utils/ReduxStore/ThemeSlice";
+import { Sun, Moon } from "lucide-react";
 
 const HeaderBrowse = () => {
     const navigate = useNavigate();
@@ -63,6 +65,20 @@ const HeaderBrowse = () => {
       dispatch(changeLanguage(e.target.value));
     }
 
+    const checkTheme = useSelector((store)=>{
+        return store.theme.theme;
+      })
+
+      const c = checkTheme || "dark";
+
+    const ToggleTheme = ()=>{
+        if(c === "dark"){
+          dispatch(changeTheme("light"));
+        }else{
+          dispatch(changeTheme("dark"));
+        }  
+    }
+
 
   return (
     <div className="absolute w-full bg-gradient-to-b from-black/80 to-transparent top-0 z-20">
@@ -77,10 +93,22 @@ const HeaderBrowse = () => {
 
         
         {/* Right Section */}
-
-
-        { /* Gpt search*/ }
+        
         <div className="flex items-center gap-4">
+
+          {/* Theme */}
+        <div>
+          <button className="p-2 bg-black text-white border border-white rounded-lg px-4 cursor-pointer 
+          font-semibold hover:px-5  hover:bg-white  hover:text-black  hover:font-medium  hover:text-lg"
+          onClick = { ToggleTheme }
+          >{c === "light" ? (
+          <Moon size={ 18 } className="text-gray-700" />
+        ) : (
+          
+          <Sun size={ 18 } className="text-yellow-500" />
+        )}
+            </button>
+        </div>
 
 
           {/* Multi Language */}
@@ -89,7 +117,7 @@ const HeaderBrowse = () => {
             <div>
           <select className="bg-black text-white font-semibold p-2 px-3 rounded-lg border border-gray-600 shadow-md hover:bg-gray-900 transition duration-200 ease-in-out cursor-pointer"
           defaultValue=""
-          onClick = { handleMultiLanguge }>
+          onChange = { handleMultiLanguge }>
             <option value="" disabled>Select Language</option>
             {
               SUPPORTED_LANGUAGE.map( (lan) => {
@@ -104,7 +132,7 @@ const HeaderBrowse = () => {
           
 
 
-
+          { /* Gpt search*/ }
           <button className="bg-red-700 p-1.5 rounded-lg font-semibold text-white cursor-pointer hover:p-1"
           onClick = {handleToggle}>
           Gpt Search
