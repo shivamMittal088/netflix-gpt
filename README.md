@@ -32,6 +32,10 @@
     - Gpt search bar .
     - Gpt search page .
     - (Bonus) Enabled Multi language Feature .
+    - Enable dark/light theme mode .
+    - Generate openAI authorization key .
+    - Created env file .
+    - using OpenAI in project .
 
 
 
