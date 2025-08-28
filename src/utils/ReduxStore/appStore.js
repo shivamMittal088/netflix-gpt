@@ -4,6 +4,7 @@ import movieReducer from "./movieSlice"
 import GptSliceReducer from "./GptSlice"
 import MultiLanguageSliceReducer from './MultiLanguageSlice';
 import ThemeSliceReducer from './ThemeSlice';
+import OpenAiSliceReducer from "./OpenAiSlice";
 
 const appStore = configureStore({
     reducer : {
@@ -12,6 +13,7 @@ const appStore = configureStore({
         GptSearch : GptSliceReducer ,
         MultiLanguageSlice : MultiLanguageSliceReducer,
         theme : ThemeSliceReducer ,
+        Ai : OpenAiSliceReducer, 
     }
 });
 

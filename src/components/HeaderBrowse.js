@@ -97,18 +97,21 @@ const HeaderBrowse = () => {
         <div className="flex items-center gap-4">
 
           {/* Theme */}
-        <div>
-          <button className="p-2 bg-black text-white border border-white rounded-lg px-4 cursor-pointer 
-          font-semibold hover:px-5  hover:bg-white  hover:text-black  hover:font-medium  hover:text-lg"
-          onClick = { ToggleTheme }
-          >{c === "light" ? (
-          <Moon size={ 18 } className="text-gray-700" />
-        ) : (
-          
-          <Sun size={ 18 } className="text-yellow-500" />
-        )}
-            </button>
-        </div>
+        {
+          (!check.Gpt) && 
+            <div>
+            <button className="p-2 bg-black text-white border border-white rounded-lg px-4 cursor-pointer 
+            font-semibold hover:px-5  hover:bg-white  hover:text-black  hover:font-medium  hover:text-lg"
+            onClick = { ToggleTheme }
+            >{c === "light" ? (
+            <Moon size={ 18 } className="text-gray-700" />
+          ) : (
+            
+            <Sun size={ 18 } className="text-yellow-500" />
+          )}
+              </button>
+          </div>
+        }
 
 
           {/* Multi Language */}

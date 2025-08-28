@@ -33,6 +33,7 @@
     - Gpt search page .
     - (Bonus) Enabled Multi language Feature .
     - Enable dark/light theme mode .
+    - Install OpenAI .
     - Generate openAI authorization key .
     - Created env file .
     - using OpenAI in project .
