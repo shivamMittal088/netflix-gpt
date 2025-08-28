@@ -14,6 +14,8 @@ const GptSearchBar = () => {
   const searchText = useRef(null);
   const dispatch = useDispatch();
 
+  const [selectedMovie,setSelectedMovie] = useState(null);
+
 
   const l = useSelector((store)=>{
     return store.MultiLanguageSlice.language;
@@ -117,7 +119,7 @@ const GptSearchBar = () => {
 
       <input
       ref = {searchText}
-      className="w-[80%] bg-red-700 p-2 rounded-md border border-white"
+      className="w-[80%] bg-red-700 p-2 rounded-md border border-white text-white"
       placeholder = {LANG[l].placeholder} ></input>
 
 
@@ -135,8 +137,34 @@ const GptSearchBar = () => {
           <h2 className="text-xl font-bold mb-4 text-white">GPT Recommendations</h2>
           <div className="flex flex-wrap justify-center gap-6">
             {movies.map((movie)=> (
-              <GptCard key = {movie.id} m={movie} />
+              <GptCard key = {movie.id} m={movie} onOpen = {()=>setSelectedMovie(movie)}/>
             ))}
+          </div>
+        </div>
+      )}
+
+
+        {/* 🔥 Global Modal */}
+      {selectedMovie && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-[9999]">
+          <div className="bg-gray-800 text-white rounded-2xl shadow-2xl w-[90%] max-w-md p-6 relative">
+            {/* Close Button */}
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-white text-lg"
+              onClick={() => setSelectedMovie(null)}
+            >
+              ✕
+            </button>
+
+            {/* Content */}
+            <h2 className="text-xl font-bold mb-2">{selectedMovie.original_title}</h2>
+            <p className="text-sm text-gray-300 mb-3">
+              <span className="font-semibold">Release:</span> {selectedMovie.release_date} |{" "}
+              <span className="font-semibold">Lang:</span> {selectedMovie.original_language}
+            </p>
+            <p className="text-gray-200 text-sm">
+              {selectedMovie.overview || "No description available."}
+            </p>
           </div>
         </div>
       )}

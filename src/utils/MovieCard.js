@@ -2,7 +2,7 @@ const MovieCard = ({ path, poster }) => {
   return (
     <div>
         
-      <div>
+      <div >
         <img
           alt="movieCard"
           src={path + poster}

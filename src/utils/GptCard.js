@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMG_URL_PATH } from "./constants";
 import { useSelector } from "react-redux";
 
 
-const GptCard = ({m}) => {
+const GptCard = ({m,onOpen}) => {
+
+  // const onClickHandler = ()=>{
+  //   console.log("Helllo");
+  // }
+
   const s = useSelector((store)=>{
     return store.Ai;
   })
 
-  const { original_title , backdrop_path , poster_path ,release_date , original_language} = m
+  const { original_title , backdrop_path , poster_path ,release_date , original_language } = m
   return (
     <div className="w-[18%] bg-gradient-to-b from-gray-800 to-gray-900 text-white rounded-xl shadow-md p-3 hover:scale-105 transition">
+
+
       {/* Poster */}
       <img 
       alt = { original_title }
       src = { IMG_URL_PATH  + (backdrop_path || poster_path)}
-      className="w-full h-28 bg-gray-700 rounded-md flex items-center justify-center text-2xl">
+      className="w-full h-28 bg-gray-700 rounded-md flex items-center justify-center text-2xl"
+      onClick = { onOpen }    // 👈 trigger modal open
+      >
       </img>
 
       {/* Movie Info */}
@@ -38,6 +47,8 @@ const GptCard = ({m}) => {
           More
         </button>
       </div>
+
+
     </div>
   );
 };
