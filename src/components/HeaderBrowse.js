@@ -81,20 +81,21 @@ const HeaderBrowse = () => {
 
 
   return (
-    <div className="absolute w-full bg-gradient-to-b from-black/80 to-transparent top-0 z-20">
-      <div className="flex justify-between items-center px-12 py-4">
+    <div className="absolute w-full bg-gradient-to-b from-black/100 to-transparent top-0 z-20">
+
+      <div className="flex flex-col justify-between items-center px-8 py-4 md:flex-row ">
         
         {/* Netflix Logo */}
         <img 
           src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
           alt="Netflix-logo"
-          className="w-40 cursor-pointer"
+          className="w-40 cursor-pointer -mx-5"
         />
 
         
         {/* Right Section */}
         
-        <div className="flex items-center gap-4">
+        <div className="flex mt-4 gap-4 md:items-center md:mt-0">
 
           {/* Theme */}
         {

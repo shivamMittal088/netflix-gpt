@@ -37,6 +37,10 @@
     - Generate openAI authorization key .
     - Created env file .
     - using OpenAI in project .
+    - Showing openAI recommendation movies .
+    - Creating Toast .
+    - Creating Modal .
+    - Creating NoResultPage .
 
 
 
