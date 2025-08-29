@@ -15,6 +15,7 @@ const GptSearchBar = () => {
   const dispatch = useDispatch();
 
   const [selectedMovie,setSelectedMovie] = useState(null);
+  const [ toast ,setToast ] = useState(false);
 
 
   const l = useSelector((store)=>{
@@ -37,6 +38,8 @@ const GptSearchBar = () => {
 
   const handleChatGptSearch = async(e)=>{
     console.log(searchText.current.value);
+
+
     
       const gptQuery = `You are a movie recommendation API.
       The user will give you a genre or movie type.
@@ -48,8 +51,10 @@ const GptSearchBar = () => {
       Query: ${searchText.current.value}`;
 
 
-
-
+      setToast(true);
+      setTimeout(()=>{
+        setToast(false);
+      },3000);
 
     // Make an api call to get movie results .
 
@@ -112,6 +117,7 @@ const GptSearchBar = () => {
 
       <div className=" flex pt-[15vh] w-screen justify-center">
 
+
       <form className = "flex w-[45%] bg-black p-3 gap-4"
       onSubmit={(e)=>{
         return e.preventDefault();
@@ -129,6 +135,13 @@ const GptSearchBar = () => {
     </form>
 
     </div>
+
+      {
+        (toast) &&
+          <div className="flex justify-center mt-7">
+            <h2 className="text-white bg-green-600 w-[12%] py-2 rounded-lg pl-2 border border-white font-bold text-md"> Searching Results ... </h2>
+          </div>
+      }
 
 
     {/* GPT Results Section */}

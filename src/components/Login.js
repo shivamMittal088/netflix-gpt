@@ -42,7 +42,7 @@ const Login = () => {
         // Signed in 
         const user = userCredential.user;
         updateProfile(auth.currentUser, {
-        displayName: "name.current.value",
+        displayName: user.current.value,
         photoURL: "https://example.com/jane-q-user/profile.jpg"
         }).then(() => {
         }).catch((error) => {
@@ -117,6 +117,7 @@ const Login = () => {
 
         { !isSignInForm && (
         <input 
+        ref=""
         placeholder='Full Name' 
         type="text" 
         className="border-2 border-black m-4 rounded-sm p-2 bg-gray-600 w-11/12 curosr-text">
