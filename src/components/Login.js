@@ -78,13 +78,13 @@ const Login = () => {
 
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative min-h-screen w-full">
       <Header />
 
       <img 
       src={bgImage} 
       alt="background-image"
-      className="h-full w-full object-cover">
+      className="h-screen w-full object-cover">
       </img>
 
       { 
@@ -100,37 +100,36 @@ const Login = () => {
         onSubmit = {(e)=>{
           e.preventDefault();
         }}
-        className="border-2 border-black h-3/4 w-4/12 m-10 p-4 rounded-lg bg-black bg-opacity-80">
+        className="border-2 border-white w-[85%] p-2 rounded-lg bg-black bg-opacity-80 h-[60%] -mt-20 md:w-1/4 md:h-[70%] md:-mt-0">
 
 
-        <h1 
-        className="text-white font-bold text-3xl m-2 p-2 ">{isSignInForm ? "SignIn" : "SignUp"}
-        </h1>
+        <h2 
+        className="text-white font-bold text-xl ml-1 pl-1 mt-0">{isSignInForm ? "SignIn" : "SignUp"}
+        </h2>
 
 
         <input 
         ref = {email}
         placeholder='E-mail' 
-        className="border-2 border-black m-4  rounded-sm p-2 bg-gray-600 w-11/12 cursor-text">
+        className="border-2 border-black ml-4 mt-2 rounded-sm p-1.5 bg-gray-600 w-9/12 cursor-text">
         </input>
 
 
         { !isSignInForm && (
         <input 
-        ref=""
         placeholder='Full Name' 
         type="text" 
-        className="border-2 border-black m-4 rounded-sm p-2 bg-gray-600 w-11/12 curosr-text">
+        className="border-2 border-black m-3 rounded-md p-1.5 bg-gray-600 w-9/12 curosr-text">
         </input> )} 
 
 
         {/* Password with Eye toggle */}
-      <div className="relative w-11/12 m-4">  { /*make it parent so that it can become relative of eye button .*/ }
+      <div className="relative w-9/12 m-4">  { /*make it parent so that it can become relative of eye button .*/ }
         <input
           ref={password}
           placeholder="Password"
           type={showPassword ? "text" : "password"}
-          className="w-full border-2 border-black rounded-sm p-2 bg-gray-600 cursor-text"
+          className="w-full border-2 border-black rounded-md p-1.5 bg-gray-600 cursor-text"
         />
 
         <button
@@ -144,7 +143,7 @@ const Login = () => {
 
         <button 
         onClick={handleButtonClick}
-        className="border-2 border-black m-4 rounded-md p-2 bg-red-500 cursor-pointer w-11/12 
+        className="border-2 border-black ml-4 mt-0.5 rounded-md p-1.5 bg-red-500 cursor-pointer w-9/12 
       hover:bg-red-600 active:bg-red-700 active:scale-95 active:shadow-inner">
           {isSignInForm ? "SignIn" : "SignUp"}
         </button>
@@ -156,22 +155,23 @@ const Login = () => {
 
 
 
-        <div className="m-2 p-2">
+        <div className="m-2 p-2 mt-0">
           <p className="text-white m-2 p-2 text-sm inline">New to Netflix ?</p>
-          <p  className="text-gray-500 text-lg p-1 m-1 font-bold inline underline cursor-pointer" onClick={toggleForm} >{!isSignInForm ? "SignIn" : "SignUp"} Now</p>
+
+          <p  className="text-gray-500 text-md p-1 m-1 mt-0 font-bold inline underline cursor-pointer" onClick={toggleForm} >{!isSignInForm ? "SignIn" : "SignUp"}</p>
         </div>
 
 
 
         <div>
-          <p className="underline cursor-pointer text-sm m-2 p-2 text-white " onClick={addLearn} >{!isLearnMore ? "LearnMore":"" }</p>
+          <p className="underline cursor-pointer text-sm mx-2 px-2 text-white" onClick={addLearn} >{!isLearnMore ? "LearnMore":"" }</p>
         </div>
 
 
 
-        <div>
+        <div className="mt-0">
           {isLearnMore && (
-          <p className="text-white text-sm m-2 p-2">
+          <p className="text-white text-xs ml-1 px-1 mt-0">
             The information collected by Google reCAPTCHA is subject to the Google Privacy Policy and Terms of Service, and is used for providing, maintaining, and improving the reCAPTCHA service and for general security purposes (it is not used for personalised advertising by Google)
           </p>
           )}

@@ -115,22 +115,22 @@ const GptSearchBar = () => {
         )
       }>
 
-      <div className=" flex pt-[15vh] w-screen justify-center">
+      <div className=" flex pt-[24vh] w-screen justify-center -mx-5 md:pt-[15vh] md:-mx-0">
 
 
-      <form className = "flex w-[45%] bg-black p-3 gap-4"
+      <form className = "flex w-[80%] bg-black p-3 gap-4 md:w-[45%]"
       onSubmit={(e)=>{
         return e.preventDefault();
       }}>
 
       <input
       ref = {searchText}
-      className="w-[80%] bg-red-700 p-2 rounded-md border border-white text-white"
+      className="w-[75%] bg-red-700 p-2 rounded-md border border-white text-white md:w-[80%] "
       placeholder = {LANG[l].placeholder} ></input>
 
 
       <button 
-      className="w-[20%] bg-red-700 text-white font-medium rounded-lg p-2 border border-white"
+      className="w-[28%] bg-red-700 text-white font-medium rounded-lg p-2 border border-white md:w-[20%]"
       onClick = { handleChatGptSearch } > {LANG[l].submit} </button>
     </form>
 
@@ -138,15 +138,15 @@ const GptSearchBar = () => {
 
       {
         (toast) &&
-          <div className="flex justify-center mt-7">
-            <h2 className="text-white bg-green-600 w-[12%] py-2 rounded-lg pl-2 border border-white font-bold text-md"> Searching Results ... </h2>
+          <div className="flex justify-center mt-5 -ml-2">
+            <h2 className="text-white bg-green-600 w-[50%] py-2 rounded-lg pl-4 border border-white font-bold text-md md:w-[12%] md:pl-2 md:pt-2"> Searching Results ... </h2>
           </div>
       }
 
 
     {/* GPT Results Section */}
       {movies.length > 0 && (
-        <div className="mt-0 px-6">
+        <div className="mt-3 px-6 md:mt-0">
           <h2 className="text-xl font-bold mb-4 text-white">GPT Recommendations</h2>
           <div className="flex flex-wrap justify-center gap-6">
             {movies.map((movie)=> (
@@ -159,7 +159,7 @@ const GptSearchBar = () => {
 
         {/* 🔥 Global Modal */}
       {selectedMovie && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-[9999]">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-[9999] ">
           <div className="bg-gray-800 text-white rounded-2xl shadow-2xl w-[90%] max-w-md p-6 relative">
             {/* Close Button */}
             <button

@@ -15,7 +15,7 @@ const GptCard = ({m,onOpen}) => {
 
   const { original_title , backdrop_path , poster_path ,release_date , original_language } = m
   return (
-    <div className="w-[18%] bg-gradient-to-b from-gray-800 to-gray-900 text-white rounded-xl shadow-md p-3 hover:scale-105 transition">
+    <div className="w-[45%] bg-gradient-to-b from-gray-800 to-gray-900 text-white rounded-xl shadow-md p-3 hover:scale-105 transition md:w-[18%]">
 
 
       {/* Poster */}
@@ -34,7 +34,6 @@ const GptCard = ({m,onOpen}) => {
         <span> { original_language } </span>
       </div>
 
-      Tags
       <div className="flex flex-wrap gap-1 mt-2">
         <span className="px-2 py-0.5 text-[10px] rounded-full bg-blue-600"></span>
         <span className="px-2 py-0.5 text-[10px] rounded-full bg-green-600"></span>

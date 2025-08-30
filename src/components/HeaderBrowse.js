@@ -95,20 +95,20 @@ const HeaderBrowse = () => {
         
         {/* Right Section */}
         
-        <div className="flex mt-4 gap-4 md:items-center md:mt-0">
+        <div className="flex mt-4 gap-4 md:items-center md:mt-0 flex-nowrap md:flex-wrap">
 
           {/* Theme */}
         {
           (!check.Gpt) && 
             <div>
-            <button className="p-2 bg-black text-white border border-white rounded-lg px-4 cursor-pointer 
-            font-semibold hover:px-5  hover:bg-white  hover:text-black  hover:font-medium  hover:text-lg"
+            <button className="p-2 bg-black text-white border border-white rounded-lg px-2.5 -ml-2 cursor-pointer 
+            font-semibold hover:px-5  hover:bg-white  hover:text-black  hover:font-medium  hover:text-lg md:px-4 md:-ml-0"
             onClick = { ToggleTheme }
             >{c === "light" ? (
-            <Moon size={ 18 } className="text-gray-700" />
+            <Moon size={ 15 } className="text-gray-700" />
           ) : (
             
-            <Sun size={ 18 } className="text-yellow-500" />
+            <Sun size={ 15 } className="text-yellow-500" />
           )}
               </button>
           </div>
@@ -116,42 +116,52 @@ const HeaderBrowse = () => {
 
 
           {/* Multi Language */}
-          {
-            (!check.Gpt) &&
-            <div>
-          <select className="bg-black text-white font-semibold p-2 px-3 rounded-lg border border-gray-600 shadow-md hover:bg-gray-900 transition duration-200 ease-in-out cursor-pointer"
-          defaultValue=""
-          onChange = { handleMultiLanguge }>
-            <option value="" disabled>Select Language</option>
-            {
-              SUPPORTED_LANGUAGE.map( (lan) => {
-              return (
-                <option key={lan.identifier} value = {lan.identifier}> { lan.value } </option>
-              )
-            })
-            }
-          </select>
-        </div>
-          }
+{!check.Gpt && (
+  <div>
+    <select
+      className="bg-black text-white font-semibold p-1.5 px-2 rounded-lg border border-gray-600 shadow-md hover:bg-gray-900 transition duration-200 ease-in-out cursor-pointer mr-4"
+      defaultValue=""
+      onChange={handleMultiLanguge}
+    >
+      {/* Placeholder for mobile
+      <option value="" disabled hidden className="block md:hidden">
+        lang
+      </option> */}
+
+      {/* Placeholder for laptop/desktop */}
+      <option value="" disabled hidden>
+        language
+      </option>
+
+      {SUPPORTED_LANGUAGE.map((lan) => (
+        <option key={lan.identifier} value={lan.identifier}>
+          {lan.value}
+        </option>
+      ))}
+    </select>
+  </div>
+)}
+
           
 
 
           { /* Gpt search*/ }
-          <button className="bg-red-700 p-1.5 rounded-lg font-semibold text-white cursor-pointer hover:p-1"
+          <button className="bg-red-700 p-2 rounded-lg font-semibold text-white cursor-pointer  hover:p-1 md:p-1.5  md:-ml-0 w-[14vw]  md:w-auto "
           onClick = {handleToggle}>
-          Gpt Search
+            <span className="md:hidden">Gpt</span>
+            <p className="px-1 hidden md:block">GPT search</p>
         </button>
 
 
           <img 
             src="https://occ-0-2152-3647.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABeGp5GpS9YuLG46QJ6mDymuYqq2e96HmAK4d73YfnCA8KNyqbmALMIqBFrG4bovJBSEdGaDQtAM7EKheZVrsEBN6hi4WHZg.png?r=733" 
             alt="user-logo"
-            className="w-10 h-10 rounded-md cursor-pointer"
+            className="w-7 h-7 rounded-md cursor-pointer ml-[25%] mt-2 md:ml-0 md:mt-0 w-10 md:h-10 hidden md:block"
           />
           
           <button 
-          className="text-white font-semibold hover:underline cursor-pointer "
-          onClick = {handleSignOut}> Sign Out </button>
+          className="text-white font-semibold hover:underline cursor-pointer mt-2 md:ml-0 border broder-white rounded-md bg-red-700 ml-3 hover:p-1 w-[21vw] md:w-auto md:px-2"
+          onClick = {handleSignOut}> <p className="py-1">Sign Out</p> </button>
         </div>
 
       </div>

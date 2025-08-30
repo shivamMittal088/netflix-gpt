@@ -29,7 +29,7 @@ const VideoBackground = ({ videoid }) => {
     <div className="w-screen h-screen ">
       {trailer ? (
         <iframe
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute top-0 left-0 w-screen h-screen object-cover"
           src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&loop=1`}
           title="YouTube video player"
           allow="autoplay; encrypted-media; fullscreen"
