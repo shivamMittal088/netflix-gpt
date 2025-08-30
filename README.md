@@ -64,5 +64,6 @@
 ![mainContainer](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/mainContainer.png)
 ![NoResultPage](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/NoResultPage.png)
 ![videoBackground](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/videoBackground.png)
+![reduxStore](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/reduxStore.png)
 
 
