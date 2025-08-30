@@ -25,7 +25,7 @@
     - Fetch data for trailer videos .
     - Embed the youtube video and make it autoplay and mute .
     - Tailwind classes to make container lokking good .
-    - Build Secondary container 
+    - Build Secondary container
     - Build movie List .
     - Build Movie Card .
     - Use custom Hooks to make code modular .
@@ -41,14 +41,7 @@
     - Creating Toast .
     - Creating Modal .
     - Creating NoResultPage .
-<<<<<<< HEAD
     - Making app responsive .
-=======
-    - making app responsive .
->>>>>>> f9becaebb54188ef8eac40ca576a72973f4ced0a
-
-
-
 
 # Features
     - Login / Sign Up form
@@ -62,10 +55,7 @@
             - Movie Suggestions 
                 - MovieList * N .
         - Add Shimmer UI .
-<<<<<<< HEAD
 
+## Project Screenshots
+![Authentication Form](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/signIn/page.png)
 
-## Project Screenshots . 
-    ![authentiction Form](src/webappScreenshots/signIn/page.png)
-=======
->>>>>>> f9becaebb54188ef8eac40ca576a72973f4ced0a
