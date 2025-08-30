@@ -41,7 +41,11 @@
     - Creating Toast .
     - Creating Modal .
     - Creating NoResultPage .
+<<<<<<< HEAD
     - Making app responsive .
+=======
+    - making app responsive .
+>>>>>>> f9becaebb54188ef8eac40ca576a72973f4ced0a
 
 
 
@@ -58,7 +62,10 @@
             - Movie Suggestions 
                 - MovieList * N .
         - Add Shimmer UI .
+<<<<<<< HEAD
 
 
 ## Project Screenshots . 
     ![authentiction Form](src/webappScreenshots/signIn/page.png)
+=======
+>>>>>>> f9becaebb54188ef8eac40ca576a72973f4ced0a
