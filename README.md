@@ -41,6 +41,7 @@
     - Creating Toast .
     - Creating Modal .
     - Creating NoResultPage .
+    - making app responsive .
 
 
 
