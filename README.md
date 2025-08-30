@@ -57,5 +57,12 @@
         - Add Shimmer UI .
 
 ## Project Screenshots
-![Authentication Form](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/signIn/page.png)
+![Authentication Form](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/Authentication.png)
+![customOfflinePage](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/customOfflinePage.png)
+![gptSearch](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/gptSearch.png)
+![gptSuggestions](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/gptSuggestions.png)
+![mainContainer](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/mainContainer.png)
+![NoResultPage](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/NoResultPage.png)
+![videoBackground](https://raw.githubusercontent.com/shivamMittal088/netflix-gpt/main/webappScreenshots/videoBackground.png)
+
 
